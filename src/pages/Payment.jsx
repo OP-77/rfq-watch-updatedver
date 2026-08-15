@@ -22,7 +22,7 @@ export default function Payment() {
   };
 
   return (
-    <FlowLayout step={3} title="Activate Your Account" subtitle="Complete the one-time activation payment to begin receiving RFQ alerts.">
+    <FlowLayout step={3} title="Activate Your Account" subtitle="Complete the one-time activation payment to begin receiving RFQ alerts." infoProps={{ copy: "Get started now and stay ahead of your competition with RFQ alerts for one simple, one-time fee." }}>
       <div className="pricing-breakdown">
         <div className="pricing-row">
           <div><strong>Activation Fee</strong><small>First user — one-time</small></div>
