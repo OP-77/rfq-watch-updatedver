@@ -36,7 +36,7 @@ export default function Payment() {
         }
         <div className="pricing-divider" />
         <div className="pricing-total">
-          <div><strong>Monthly Total</strong><small>Billed monthly</small></div>
+          <div><strong>Monthly Total</strong></div>
           <span>${total.toFixed(2)}/mo</span>
         </div>
       </div>
