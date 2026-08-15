@@ -30,14 +30,14 @@ export default function OrderConfirmation() {
         </section>
 
         <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8">
-          <section className="setup-card">
+          <section className="setup-card max-w-none w-full">
             <p className="rfq-eyebrow">Break out of your CAGE</p>
             <h2>Go Further with RFQ Watch Pro</h2>
             <div className="gold-rule" />
             <p className="text-slate-500 mb-2">RFQ Watch Lite keeps you in the loop. RFQ Watch Pro puts your whole team ahead of the curve. With a dynamic dashboard, detailed analytics on your competition, and advanced lookup functions, RFQ Watch Pro gives you everything you need to win more government contracts.</p>
             <a className="navy-button" href="https://www.logisticsinformation.com/LITWeb3/home" target="_blank" rel="noopener noreferrer">Explore RFQ Watch Pro <ArrowRight size={18} /></a>
           </section>
-          <section className="setup-card">
+          <section className="setup-card max-w-none w-full">
             {proFeatures.map(([title, copy], i) =>
               <div className="landing-step" key={title}>
                 <span>{i + 1}</span>
