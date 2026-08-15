@@ -23,8 +23,9 @@ export default function OrderConfirmation() {
           <h1 className="mx-auto text-5xl">Welcome to <span>RFQ Watch Lite</span></h1>
           <div className="gold-rule mx-auto" />
           <p className="max-w-lg mx-auto">Your subscription is active. We've sent a confirmation to {setup.email || "your email address"} — daily RFQ alerts start tomorrow morning.</p>
-          <div className="mt-6 text-[#6fa8d6]">
-            <span className="font-semibold">${total.toFixed(2)}/mo · {userCount} {userCount === 1 ? "recipient" : "recipients"}</span>
+          <div className="mt-6 flex flex-col sm:flex-row items-center sm:justify-between gap-4">
+            <span className="font-semibold text-[#6fa8d6]">${total.toFixed(2)}/mo · {userCount} {userCount === 1 ? "recipient" : "recipients"}</span>
+            <Link className="back-button" to="/">Return Home</Link>
           </div>
         </section>
 
@@ -40,7 +41,6 @@ export default function OrderConfirmation() {
             </div>
             )}</div>
           <a className="navy-button" href="https://www.logisticsinformation.com/LITWeb3/home" target="_blank" rel="noopener noreferrer">Explore RFQ Watch Pro <ArrowRight size={18} /></a>
-          <Link className="back-button justify-center mt-4" to="/">Return Home</Link>
         </section>
       </main>
     </div>);
