@@ -73,7 +73,7 @@ export default function Payment() {
           {processing ?
           <><Loader2 className="animate-spin" size={18} /> Redirecting to Stripe...</> :
 
-          <>Subscribe ${total.toFixed(2)}/mo and Activate <ArrowRight size={18} /></>
+          <>Subscribe ${total.toFixed(2)}/mo <ArrowRight size={18} /></>
           }
         </button>
       </div>
