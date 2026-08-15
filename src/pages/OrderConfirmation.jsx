@@ -19,7 +19,7 @@ export default function OrderConfirmation() {
       <BrandHeader />
       <main className="px-5 py-12 lg:px-16 flex flex-col gap-10">
         <section className="info-shadow-box text-center w-full max-w-none rounded-none sm:rounded-[15px]">
-          <p className="rfq-eyebrow">Order Confirmed</p>
+          <p className="rfq-eyebrow mb-4">Order Confirmed</p>
           <h1 className="mx-auto text-5xl">Welcome to <span>RFQ Watch Lite</span></h1>
           <div className="gold-rule mx-auto" />
           <p className="max-w-lg mx-auto">Your subscription is active. We've sent a confirmation to {setup.email || "your email address"} — daily RFQ alerts start tomorrow morning.</p>
