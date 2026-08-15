@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BadgeCheck, BellRing, ChartNoAxesCombined, Headset, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, BadgeCheck, Crosshair, LineChart, Scale, Sparkles, Telescope } from "lucide-react";
 import BrandHeader from "@/components/rfq/BrandHeader";
 
 const proFeatures = [
-[Zap, "Real-Time Alerts", "Get notified the instant a matching RFQ drops, so you never lose a beat."],
-[ChartNoAxesCombined, "Advanced Analytics", "Track win rates, response times, and opportunity trends at a glance."],
-[Headset, "Dedicated Support", "Priority access to our government contracting specialists whenever you need help."],
-[BellRing, "Unlimited Recipients", "Add as many team members as you need at no extra cost."]];
+[Crosshair, "AI-Identified Win List", "Skip the noise. Our AI cross-references AMSC ratings, DLA shortage data, competition scores, and OEM lists to surface the RFQs you're actually positioned to win — not just everything that matches a keyword."],
+[Telescope, "Competitor & NSN Intelligence", "See exactly what your competitors are winning, by NSN and by weapon system. Track shortage vs. surplus positions, net demand, and deficit forecasts before you commit to a bid."],
+[Scale, "Instant Price Justification", "Build pricing backup in seconds, not hours. Search historical NSN pricing with average unit cost, most recent award price, and a match-confidence score — so every quote is defensible."],
+[LineChart, "Expanded Opportunity Discovery", "Go beyond RFQs with built-in SBIR/OTA search, Deep Research, and Pentagon ChatGPT — plus unlimited team recipients, so nothing falls through the cracks."]];
 
 
 export default function OrderConfirmation() {
