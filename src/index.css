@@ -124,6 +124,7 @@
   .rfq-form label { @apply text-sm font-semibold text-[#1a3d60]; } .rfq-form label>span { @apply text-[#2c5a89]; }
   .form-grid { @apply grid sm:grid-cols-2 gap-6; }
   .rfq-form input { @apply block w-full h-12 border border-[#cccccc] rounded-full px-5 mt-2 bg-white font-normal outline-none transition focus:border-[#2c5a89] focus:ring-2 focus:ring-[#2c5a89]/20; }
+  .rfq-form input.input-error { @apply border-red-400 bg-red-50 ring-2 ring-red-200; }
   .rfq-form label small { @apply block text-xs text-slate-500 font-normal mt-2; }
   .form-divider { @apply border-t border-slate-200 my-8; }
   .continue-button,.gold-button,.navy-button { @apply inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-[#2c5a89] text-white font-bold rounded-full transition hover:bg-[#3a6ba0]; }

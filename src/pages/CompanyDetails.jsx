@@ -25,7 +25,7 @@ export default function CompanyDetails() {
     <form className="rfq-form" onSubmit={submit}>
       <div className="secondary-list">{users.map((user, index) => <fieldset className="user-box" key={index}><legend>Recipient {index + 2}</legend><div className="form-grid">
         <label>Full Name <span>*</span><input value={user.name} onChange={(e) => update(index, "name", e.target.value)} placeholder="Enter full name" required /></label>
-        <label>Email Address <span>*</span><input type="email" value={user.email} onChange={(e) => update(index, "email", e.target.value)} placeholder="recipient@company.com" required />{errors[index] && <small className="text-red-500">{errors[index]}</small>}</label>
+        <label>Email Address <span>*</span><input type="email" value={user.email} onChange={(e) => update(index, "email", e.target.value)} placeholder="recipient@company.com" required className={errors[index] ? "input-error" : ""} />{errors[index] && <small className="text-red-500">{errors[index]}</small>}</label>
       </div></fieldset>)}</div>
       <div className="form-divider" /><div className="form-actions"><button type="button" className="back-button" onClick={() => navigate("/create-account")}><ArrowLeft size={18} /> Back</button><button className="continue-button" type="submit">Continue to Payment <ArrowRight size={18} /></button></div>
     </form>
