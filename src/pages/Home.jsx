@@ -13,7 +13,7 @@ export default function Home() {
           <div className="gold-rule" />
           <p>Add your CAGE code, choose who receives alerts, and get matching government RFQs delivered directly to your inbox.</p>
           <div className="flex justify-end">
-            <Link className="gold-button hidden" to="/create-account">Create Your Account <ArrowRight size={18} /></Link>
+            
           </div>
           <small><CircleCheck size={15} /> Rapid. Reliable. Relevant.</small>
         </div>
