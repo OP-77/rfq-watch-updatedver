@@ -15,6 +15,7 @@ import Home from '@/pages/Home';
 import CreateAccount from '@/pages/CreateAccount';
 import CompanyDetails from '@/pages/CompanyDetails';
 import Payment from '@/pages/Payment';
+import OrderConfirmation from '@/pages/OrderConfirmation';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -51,6 +52,7 @@ const AuthenticatedApp = () => {
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/company-details" element={<CompanyDetails />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
