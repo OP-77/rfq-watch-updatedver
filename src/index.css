@@ -92,11 +92,11 @@
 }
 
 @layer components {
-  .rfq-page,.landing-page { @apply min-h-screen text-white; background-color:#06254a; background-image:radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px); background-size:22px 22px; }
+  .rfq-page,.landing-page { @apply min-h-screen text-white; background-color:#06254a; background-image:radial-gradient(rgba(255,255,255,0.22) 1.4px, transparent 1.4px); background-size:22px 22px; }
   .rfq-header { @apply h-[82px] bg-[#051f3e]/90 border-b border-white/10 flex items-center px-5 sm:px-10 lg:px-16 backdrop-blur; }
   .rfq-brand { @apply inline-flex items-center gap-3 text-white tracking-[0.12em] text-lg no-underline; }
   .rfq-brand small { @apply block mt-0.5 text-[10px] font-medium tracking-[0.08em] text-slate-400; }
-  .rfq-lit-logo { @apply h-7 w-auto object-contain; }
+  .rfq-lit-logo { @apply h-10 w-auto object-contain; }
   .rfq-brand small { @apply inline ml-1 px-1.5 py-0.5 rounded-full bg-[#2c5a89]/30 text-[#9bc4e8] text-[10px] font-semibold tracking-normal align-middle; }
   .rfq-layout { @apply max-w-[1400px] mx-auto grid lg:grid-cols-[0.8fr_1.2fr] min-h-[calc(100vh-82px)]; }
   .info-panel { @apply bg-transparent text-white px-7 py-12 sm:p-12 lg:p-16 flex flex-col justify-center; }
