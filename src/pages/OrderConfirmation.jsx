@@ -33,7 +33,7 @@ export default function OrderConfirmation() {
         <p className="rfq-eyebrow">Break out of your CAGE</p>
         <h2>Go Further with RFQ Watch Pro</h2>
         <div className="gold-rule" />
-        <p className="text-slate-500 mb-2 not-italic capitalize">RFQ Watch Lite Keeps You In The Loop. RFQ Watch Pro Puts Your Whole Team Ahead Of The Curve. With A Dynamic Dashboard, Detailed Analytics on your Competition, and Advanced Lookup Functions, RFQ Watch Pro gives you Everything You Need To Win More Government Contracts.
+        <p className="text-slate-500 mb-2 not-italic normal-case">RFQ Watch Lite Keeps You In The Loop. RFQ Watch Pro Puts Your Whole Team Ahead Of The Curve. With A Dynamic Dashboard, Detailed Analytics on your Competition, and Advanced Lookup Functions, RFQ Watch Pro gives you Everything You Need To Win More Government Contracts.
 
 
         </p>
