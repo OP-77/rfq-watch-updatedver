@@ -17,8 +17,8 @@ export default function OrderConfirmation() {
   return (
     <div className="landing-page">
       <BrandHeader />
-      <main className="px-5 py-12 lg:px-16 max-w-3xl mx-auto flex flex-col gap-10">
-        <section className="info-shadow-box text-center">
+      <main className="px-5 py-12 lg:px-16 flex flex-col gap-10">
+        <section className="info-shadow-box text-center w-full max-w-none rounded-none sm:rounded-[15px]">
           <p className="rfq-eyebrow">Order Confirmed</p>
           <h1 className="mx-auto">Welcome to <span>RFQ Watch Lite</span></h1>
           <div className="gold-rule mx-auto" />
