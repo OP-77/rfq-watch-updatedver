@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, CreditCard, Loader2, LockKeyhole, Mail } from "lucide-react";
 import FlowLayout from "@/components/rfq/FlowLayout";
-import { base44 } from "@/api/base44Client";
 
 export default function Payment() {
   const navigate = useNavigate();
@@ -16,27 +15,10 @@ export default function Payment() {
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
 
-  const handlePay = async () => {
-    setError("");
+  const handlePay = () => {
     setProcessing(true);
-    try {
-      const res = await base44.functions.invoke("createStripeCheckout", {
-        amount: total,
-        userCount,
-        email: setup.email || "",
-        fullName: setup.fullName || "",
-        cageCode: setup.cageCode || "",
-      });
-      if (res?.url) {
-        window.location.href = res.url;
-      } else {
-        setError("Unable to start payment. Please try again.");
-      }
-    } catch (err) {
-      setError(err.message || "Payment failed to start. Please try again.");
-    } finally {
-      setProcessing(false);
-    }
+    // Replace with your Stripe Payment Link
+    window.location.href = "https://buy.stripe.com/your-payment-link";
   };
 
   return (
