@@ -25,15 +25,15 @@ export default function Payment() {
     <FlowLayout step={3} title="Activate Your Account" subtitle="Complete your monthly subscription to begin receiving RFQ alerts." infoProps={{ copy: "Get started now and stay ahead of your competition with RFQ alerts for a simple monthly fee." }}>
       <div className="pricing-breakdown">
         <div className="pricing-row">
-          <div><strong>Base Subscription</strong><small>First user — monthly</small></div>
+          <div><strong>Base Subscription</strong><small>First User
+</small></div>
           <span>${baseFee.toFixed(2)}/mo</span>
         </div>
-        {additionalUsers > 0 && (
-          <div className="pricing-row">
+        {additionalUsers > 0 && <div className="pricing-row">
             <div><strong>Additional Recipients</strong><small>{additionalUsers} {additionalUsers === 1 ? "recipient" : "recipients"} × $5.00/mo</small></div>
             <span>${additionalFee.toFixed(2)}/mo</span>
           </div>
-        )}
+        }
         <div className="pricing-divider" />
         <div className="pricing-total">
           <div><strong>Monthly Total</strong><small>Billed monthly</small></div>
@@ -70,13 +70,13 @@ export default function Payment() {
           <ArrowLeft size={18} /> Back
         </button>
         <button className="continue-button" type="button" onClick={handlePay} disabled={processing}>
-          {processing ? (
-            <><Loader2 className="animate-spin" size={18} /> Redirecting to Stripe...</>
-          ) : (
-            <>Subscribe ${total.toFixed(2)}/mo and Activate <ArrowRight size={18} /></>
-          )}
+          {processing ?
+          <><Loader2 className="animate-spin" size={18} /> Redirecting to Stripe...</> :
+
+          <>Subscribe ${total.toFixed(2)}/mo and Activate <ArrowRight size={18} /></>
+          }
         </button>
       </div>
-    </FlowLayout>
-  );
+    </FlowLayout>);
+
 }
