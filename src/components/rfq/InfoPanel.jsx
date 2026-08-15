@@ -8,7 +8,7 @@ const items = [
 
 export default function InfoPanel({ title = "Never Miss a", accent = "Relevant RFQ", ending = "Again.", copy = "Add your CAGE code, choose who receives alerts, and get matching government RFQs delivered directly to your inbox." }) {
   return <section className="info-panel">
-    <div className="info-shadow-box">
+    <div className="info-shadow-box opacity-100">
       <p className="rfq-eyebrow">Government RFQ Alerts</p>
       <h1>{title} <span>{accent}</span> {ending}</h1>
       <div className="gold-rule" />
