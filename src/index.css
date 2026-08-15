@@ -129,7 +129,7 @@
   .rfq-form label small { @apply block text-xs text-slate-500 font-normal mt-2; }
   .form-divider { @apply border-t border-slate-200 my-8; }
   .continue-button,.gold-button,.navy-button { @apply inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-[#2c5a89] text-white font-bold rounded-full transition hover:bg-[#3a6ba0]; }
-  .continue-button { @apply ml-auto; } .form-actions { @apply flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3; }
+  .continue-button { @apply mx-auto w-full sm:w-auto sm:ml-auto; } .form-actions { @apply flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3; }
   .back-button { @apply inline-flex items-center justify-center gap-2 min-h-12 px-4 text-slate-600 font-semibold hover:text-[#2c5a89]; }
   .secondary-list { @apply max-h-[430px] overflow-auto pr-1 space-y-5; } .user-box { @apply border border-slate-200 p-5 rounded-xl; } .user-box legend { @apply px-2 text-xs uppercase tracking-widest font-bold text-[#2c5a89]; }
   .fee-card { @apply bg-[#06254a] text-white p-5 rounded-xl flex justify-between items-center; } .fee-card span { @apply text-sm text-slate-300; } .fee-card strong { @apply text-3xl text-[#6fa8d6]; }
