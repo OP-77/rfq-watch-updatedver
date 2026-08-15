@@ -7,12 +7,16 @@ export default function Home() {
     <BrandHeader />
     <main className="landing-hero">
       <section className="hero-copy">
-        <p className="rfq-eyebrow">Government RFQ Alerts</p>
-        <h1>Never Miss a <span>Relevant RFQ</span> Again.</h1>
-        <div className="gold-rule" />
-        <p>Add your CAGE code, choose who receives alerts, and get matching government RFQs delivered directly to your inbox.</p>
-        <Link className="gold-button" to="/create-account">Create Your Account <ArrowRight size={18} /></Link>
-        <small><CircleCheck size={15} /> Rapid. Reliable. Relevant.</small>
+        <div className="info-shadow-box">
+          <p className="rfq-eyebrow">Daily RFQ Alerts</p>
+          <h1>Never Miss a <span>Relevant RFQ</span> Again.</h1>
+          <div className="gold-rule" />
+          <p>Add your CAGE code, choose who receives alerts, and get matching government RFQs delivered directly to your inbox.</p>
+          <div className="flex justify-end">
+            <Link className="gold-button" to="/create-account">Create Your Account <ArrowRight size={18} /></Link>
+          </div>
+          <small><CircleCheck size={15} /> Rapid. Reliable. Relevant.</small>
+        </div>
       </section>
       <section className="setup-card">
         <p className="rfq-eyebrow">Simple Setup</p><h2>Get RFQ Alerts in 3 Simple Steps</h2>
