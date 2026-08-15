@@ -26,7 +26,7 @@ export default function OrderConfirmation() {
           <div className="flex items-center gap-3 mt-6 text-[#6fa8d6]">
             <BadgeCheck size={22} /> <span className="font-semibold">${total.toFixed(2)}/mo · {userCount} {userCount === 1 ? "recipient" : "recipients"}</span>
           </div>
-          <small className="mt-5"><Sparkles size={15} /> Ready to take your contracting pipeline further? U RFQ Watch Pro.</small>
+          <small className="mt-5"><Sparkles size={15} /> Ready to take your contracting pipeline further? Upgrade to RFQ Watch Pro.</small>
         </div>
       </section>
       <section className="setup-card">
