@@ -25,7 +25,7 @@ export default function CreateAccount() {
         <label>Email Address <span>*</span><input name="email" type="email" value={form.email} onChange={update} placeholder="you@company.com" required className={emailError ? "input-error" : ""} />{emailError ? <small className="!text-red-500 font-semibold">{emailError}</small> : <small>RFQ alerts will be sent to this address.</small>}</label>
         <label>Amount of Recipients <span>*</span><input name="amountUsers" type="number" min="1" max="50" value={form.amountUsers} onChange={update} required /><small>Include yourself in the total.</small></label>
       </div>
-      <div className="form-divider" /><button className="continue-button" type="submit">Continue <ArrowRight size={18} /></button>
+      <div className="form-divider" /><div className="form-actions"><button className="continue-button" type="submit">Continue <ArrowRight size={18} /></button></div>
     </form>
   </FlowLayout>;
 }
