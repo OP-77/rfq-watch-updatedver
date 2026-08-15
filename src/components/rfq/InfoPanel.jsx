@@ -2,7 +2,7 @@ import { CircleCheck, Mail, Users } from "lucide-react";
 
 const items = [
 [CircleCheck, "Relevant RFQs", "Matched to your CAGE code and preferences."],
-[Mail, "Timely Alerts", "Government opportunities sent to your inbox."],
+[Mail, "Timely Alerts", "Government opportunities sent to your inbox daily."],
 [Users, "Team Access", "Keep every account user informed."]];
 
 
