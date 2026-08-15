@@ -12,7 +12,7 @@ export default function Home() {
         <div className="gold-rule" />
         <p>Add your CAGE code, choose who receives alerts, and get matching government RFQs delivered directly to your inbox.</p>
         <Link className="gold-button" to="/create-account">Create Your Account <ArrowRight size={18} /></Link>
-        <small><CircleCheck size={15} /> Secure. Simple. Relevant.</small>
+        <small><CircleCheck size={15} /> Rapid. Reliable. Relevant.</small>
       </section>
       <section className="setup-card">
         <p className="rfq-eyebrow">Simple Setup</p><h2>Get RFQ Alerts in 3 Simple Steps</h2>
