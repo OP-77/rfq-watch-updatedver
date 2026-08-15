@@ -30,17 +30,21 @@ export default function OrderConfirmation() {
         </section>
 
         <section className="setup-card">
-          <p className="rfq-eyebrow">Break out of your CAGE</p>
-          <h2>Go Further with RFQ Watch Pro</h2>
-          <div className="gold-rule" />
-          <p className="text-slate-500 mb-2">RFQ Watch Lite keeps you in the loop. RFQ Watch Pro puts your whole team ahead of the curve. With a dynamic dashboard, detailed analytics on your competition, and advanced lookup functions, RFQ Watch Pro gives you everything you need to win more government contracts.</p>
-          <div>{proFeatures.map(([title, copy], i) =>
-            <div className="landing-step" key={title}>
-              <span>{i + 1}</span>
-              <div><h3>{title}</h3><p>{copy}</p></div>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div>
+              <p className="rfq-eyebrow">Break out of your CAGE</p>
+              <h2>Go Further with RFQ Watch Pro</h2>
+              <div className="gold-rule" />
+              <p className="text-slate-500 mb-2">RFQ Watch Lite keeps you in the loop. RFQ Watch Pro puts your whole team ahead of the curve. With a dynamic dashboard, detailed analytics on your competition, and advanced lookup functions, RFQ Watch Pro gives you everything you need to win more government contracts.</p>
+              <a className="navy-button" href="https://www.logisticsinformation.com/LITWeb3/home" target="_blank" rel="noopener noreferrer">Explore RFQ Watch Pro <ArrowRight size={18} /></a>
             </div>
-            )}</div>
-          <a className="navy-button" href="https://www.logisticsinformation.com/LITWeb3/home" target="_blank" rel="noopener noreferrer">Explore RFQ Watch Pro <ArrowRight size={18} /></a>
+            <div>{proFeatures.map(([title, copy], i) =>
+              <div className="landing-step" key={title}>
+                <span>{i + 1}</span>
+                <div><h3>{title}</h3><p>{copy}</p></div>
+              </div>
+              )}</div>
+          </div>
         </section>
       </main>
     </div>);
