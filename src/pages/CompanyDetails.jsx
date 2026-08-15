@@ -7,7 +7,10 @@ export default function CompanyDetails() {
   const navigate = useNavigate();
   const setup = JSON.parse(localStorage.getItem("rfqWatchSetup") || "{}");
   const secondaryCount = Math.max(0, Number(setup.amountUsers || 1) - 1);
-  const [users, setUsers] = useState(setup.secondaryUsers?.length === secondaryCount ? setup.secondaryUsers : Array.from({ length: secondaryCount }, () => ({ name: "", email: "" })));
+  const [users, setUsers] = useState(() => {
+    const existing = setup.secondaryUsers || [];
+    return Array.from({ length: secondaryCount }, (_, i) => existing[i] || { name: "", email: "" });
+  });
   const [errors, setErrors] = useState({});
   useEffect(() => { if (secondaryCount === 0) navigate("/payment", { replace: true }); }, [secondaryCount, navigate]);
   const checkDuplicates = (userList) => {
@@ -27,7 +30,7 @@ export default function CompanyDetails() {
         <label>Full Name <span>*</span><input value={user.name} onChange={(e) => update(index, "name", e.target.value)} placeholder="Enter full name" required /></label>
         <label>Email Address <span>*</span><input type="email" value={user.email} onChange={(e) => update(index, "email", e.target.value)} placeholder="recipient@company.com" required className={errors[index] ? "input-error" : ""} />{errors[index] && <small className="!text-red-500 font-semibold">{errors[index]}</small>}</label>
       </div></fieldset>)}</div>
-      <div className="form-divider" /><div className="form-actions"><button type="button" className="back-button" onClick={() => navigate("/create-account")}><ArrowLeft size={18} /> Back</button><button className="continue-button" type="submit">Continue to Payment <ArrowRight size={18} /></button></div>
+      <div className="form-divider" /><div className="form-actions"><button type="button" className="back-button" onClick={() => { localStorage.setItem("rfqWatchSetup", JSON.stringify({ ...setup, secondaryUsers: users })); navigate("/create-account"); }}><ArrowLeft size={18} /> Back</button><button className="continue-button" type="submit">Continue to Payment <ArrowRight size={18} /></button></div>
     </form>
   </FlowLayout>;
 }
