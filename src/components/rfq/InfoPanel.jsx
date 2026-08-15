@@ -11,7 +11,7 @@ export default function InfoPanel({ title = "Never Miss a", accent = "Relevant R
     <p className="rfq-eyebrow">Government RFQ Alerts</p>
     <h1>{title} <span>{accent}</span> {ending}</h1>
     <div className="gold-rule" />
-    <p className="info-copy">Add users to your RFQ Watch account to receive government opportunities relevant to your business.</p>
+    <p className="info-copy">Add secondary users to your RFQ Watch account to receive government opportunities relevant to your business.</p>
     <div className="info-benefits">{items.map(([Icon, heading, copy]) => <div className="info-benefit" key={heading}>
       <Icon /><div><h3>{heading}</h3><p>{copy}</p></div>
     </div>)}</div>
