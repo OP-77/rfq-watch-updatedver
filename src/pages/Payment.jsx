@@ -8,9 +8,9 @@ export default function Payment() {
   const setup = JSON.parse(localStorage.getItem("rfqWatchSetup") || "{}");
   const userCount = Number(setup.amountUsers || 1);
   const additionalUsers = Math.max(0, userCount - 1);
-  const activationFee = 50;
-  const additionalFee = additionalUsers * 10;
-  const total = activationFee + additionalFee;
+  const baseFee = 50;
+  const additionalFee = additionalUsers * 5;
+  const total = baseFee + additionalFee;
   const back = userCount === 1 ? "/create-account" : "/company-details";
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
@@ -22,22 +22,22 @@ export default function Payment() {
   };
 
   return (
-    <FlowLayout step={3} title="Activate Your Account" subtitle="Complete the one-time activation payment to begin receiving RFQ alerts." infoProps={{ copy: "Get started now and stay ahead of your competition with RFQ alerts for a simple, one-time fee." }}>
+    <FlowLayout step={3} title="Activate Your Account" subtitle="Complete your monthly subscription to begin receiving RFQ alerts." infoProps={{ copy: "Get started now and stay ahead of your competition with RFQ alerts for a simple monthly fee." }}>
       <div className="pricing-breakdown">
         <div className="pricing-row">
-          <div><strong>Activation Fee</strong><small>First user — one-time</small></div>
-          <span>${activationFee.toFixed(2)}</span>
+          <div><strong>Base Subscription</strong><small>First user — monthly</small></div>
+          <span>${baseFee.toFixed(2)}/mo</span>
         </div>
         {additionalUsers > 0 && (
           <div className="pricing-row">
-            <div><strong>Additional Recipients</strong><small>{additionalUsers} {additionalUsers === 1 ? "recipient" : "recipients"} × $10.00</small></div>
-            <span>${additionalFee.toFixed(2)}</span>
+            <div><strong>Additional Recipients</strong><small>{additionalUsers} {additionalUsers === 1 ? "recipient" : "recipients"} × $5.00/mo</small></div>
+            <span>${additionalFee.toFixed(2)}/mo</span>
           </div>
         )}
         <div className="pricing-divider" />
         <div className="pricing-total">
-          <div><strong>Total Due Today</strong><small>One-time payment</small></div>
-          <span>${total.toFixed(2)}</span>
+          <div><strong>Monthly Total</strong><small>Billed monthly</small></div>
+          <span>${total.toFixed(2)}/mo</span>
         </div>
       </div>
 
@@ -58,7 +58,7 @@ export default function Payment() {
         <Mail />
         <div>
           <h3>Payment Confirmation</h3>
-          <p>A receipt will be sent to {setup.email || "your email address"} after payment.</p>
+          <p>A receipt will be sent to {setup.email || "your email address"} each billing cycle.</p>
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export default function Payment() {
           {processing ? (
             <><Loader2 className="animate-spin" size={18} /> Redirecting to Stripe...</>
           ) : (
-            <>Pay ${total.toFixed(2)} and Activate <ArrowRight size={18} /></>
+            <>Subscribe ${total.toFixed(2)}/mo and Activate <ArrowRight size={18} /></>
           )}
         </button>
       </div>
