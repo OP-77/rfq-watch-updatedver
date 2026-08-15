@@ -33,10 +33,10 @@ export default function OrderConfirmation() {
         <p className="rfq-eyebrow">Break out of your CAGE</p>
         <h2>Go Further with RFQ Watch Pro</h2>
         <div className="gold-rule" />
-        <p className="text-slate-500 mb-2 not-italic capitalize">RFQ Watch Lite keeps you in the loop. 
-RFQ Watch Pro puts your whole team ahead of the curve. 
+        <p className="text-slate-500 mb-2 not-italic normal-case">RFQ Watch Lite keeps you in the loop.
+RFQ Watch Pro puts your whole team ahead of the curve.
 
-With a dynamic dashboard, detailed analytics on your competition, and advanced look-up functions, RFQ Watch Pro gives you everything you need to win more government contracts.</p>
+With a Dynamic Dashboard, Detailed nalytics on your competition, and advanced look-up functions, RFQ Watch Pro gives you everything you need to win more government contracts.</p>
         <div>{proFeatures.map(([Icon, title, copy], i) => <div className="landing-step" key={title}><span>{i + 1}</span><div><h3 className="flex items-center gap-2"><Icon size={18} className="text-[#2c5a89]" /> {title}</h3><p>{copy}</p></div></div>)}</div>
         <a className="navy-button" href="https://www.logisticsinformation.com/LITWeb3/home" target="_blank" rel="noopener noreferrer">Explore RFQ Watch Pro <ArrowRight size={18} /></a>
         <Link className="back-button justify-center mt-4" to="/">Return Home</Link>
