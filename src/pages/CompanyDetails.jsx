@@ -24,7 +24,7 @@ export default function CompanyDetails() {
   };
   const update = (index, field, value) => { const updated = users.map((u, i) => i === index ? { ...u, [field]: value } : u); setUsers(updated); setErrors(checkDuplicates(updated)); };
   const submit = (e) => { e.preventDefault(); const errs = checkDuplicates(users); setErrors(errs); if (Object.keys(errs).length) return; localStorage.setItem("rfqWatchSetup", JSON.stringify({ ...setup, secondaryUsers: users })); navigate("/payment"); };
-  return <FlowLayout step={2} title="Add Recipients" subtitle={`Add the ${secondaryCount} additional ${secondaryCount === 1 ? "recipient" : "recipients"} who should receive RFQ alerts.`} infoProps={{ title: "Keep Your", accent: "Whole Team", ending: "Informed." }}>
+  return <FlowLayout step={2} title="Add Recipients" subtitle={`Add the ${secondaryCount} additional ${secondaryCount === 1 ? "recipient" : "recipients"} who should receive RFQ alerts.`} infoProps={{ title: "Keep Your", accent: "Whole Team", ending: "Informed.", copy: "Add secondary recipients to your RFQ Watch account to keep your whole team up to speed on the latest RFQs relevant to your business." }}>
     <form className="rfq-form" onSubmit={submit}>
       <div className="secondary-list">{users.map((user, index) => <fieldset className="user-box" key={index}><legend>Recipient {index + 2}</legend><div className="form-grid">
         <label>Full Name <span>*</span><input value={user.name} onChange={(e) => update(index, "name", e.target.value)} placeholder="Enter full name" required /></label>

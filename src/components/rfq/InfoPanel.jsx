@@ -6,12 +6,12 @@ const items = [
 [Users, "Team Access", "Keep every account user informed."]];
 
 
-export default function InfoPanel({ title = "Never Miss a", accent = "Relevant RFQ", ending = "Again." }) {
+export default function InfoPanel({ title = "Never Miss a", accent = "Relevant RFQ", ending = "Again.", copy = "Add your CAGE code, choose who receives alerts, and get matching government RFQs delivered directly to your inbox." }) {
   return <section className="info-panel">
     <p className="rfq-eyebrow">Government RFQ Alerts</p>
     <h1>{title} <span>{accent}</span> {ending}</h1>
     <div className="gold-rule" />
-    <p className="info-copy">Add secondary recipients to your RFQ Watch account to keep your whole team up to speed on the latest RFQs relevant to your business.</p>
+    <p className="info-copy">{copy}</p>
     <div className="info-benefits">{items.map(([Icon, heading, copy]) => <div className="info-benefit" key={heading}>
       <Icon /><div><h3>{heading}</h3><p>{copy}</p></div>
     </div>)}</div>
