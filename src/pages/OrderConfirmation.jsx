@@ -3,11 +3,11 @@ import { ArrowRight, BadgeCheck, BellRing, ChartNoAxesCombined, Headset, Sparkle
 import BrandHeader from "@/components/rfq/BrandHeader";
 
 const proFeatures = [
-  [Zap, "Real-Time Alerts", "Get notified the instant a matching RFQ drops, so you never lose a beat."],
-  [ChartNoAxesCombined, "Advanced Analytics", "Track win rates, response times, and opportunity trends at a glance."],
-  [Headset, "Dedicated Support", "Priority access to our government contracting specialists whenever you need help."],
-  [BellRing, "Unlimited Recipients", "Add as many team members as you need at no extra cost."]
-];
+[Zap, "Real-Time Alerts", "Get notified the instant a matching RFQ drops, so you never lose a beat."],
+[ChartNoAxesCombined, "Advanced Analytics", "Track win rates, response times, and opportunity trends at a glance."],
+[Headset, "Dedicated Support", "Priority access to our government contracting specialists whenever you need help."],
+[BellRing, "Unlimited Recipients", "Add as many team members as you need at no extra cost."]];
+
 
 export default function OrderConfirmation() {
   const setup = JSON.parse(localStorage.getItem("rfqWatchSetup") || "{}");
@@ -30,7 +30,7 @@ export default function OrderConfirmation() {
         </div>
       </section>
       <section className="setup-card">
-        <p className="rfq-eyebrow">Upgrade Your Experience</p>
+        <p className="rfq-eyebrow">Break out of your CAGE</p>
         <h2>Go Further with RFQ Watch Pro</h2>
         <div className="gold-rule" />
         <p className="text-slate-500 mb-2">RFQ Watch Lite keeps you in the loop. RFQ Watch Pro puts your whole team ahead of the curve with real-time alerts, deep analytics, and unlimited recipients — everything you need to win more government contracts.</p>
