@@ -30,7 +30,7 @@ export default function Payment() {
         </div>
         {additionalUsers > 0 && (
           <div className="pricing-row">
-            <div><strong>Additional Users</strong><small>{additionalUsers} {additionalUsers === 1 ? "user" : "users"} × $10.00</small></div>
+            <div><strong>Additional Recipients</strong><small>{additionalUsers} {additionalUsers === 1 ? "recipient" : "recipients"} × $10.00</small></div>
             <span>${additionalFee.toFixed(2)}</span>
           </div>
         )}

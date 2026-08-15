@@ -1,4 +1,4 @@
-const steps = ["Create Account", "Secondary Users", "Payment"];
+const steps = ["Create Account", "Recipients", "Payment"];
 
 export default function StepProgress({ active }) {
   return (
