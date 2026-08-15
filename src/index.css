@@ -112,7 +112,7 @@
   .info-benefit>svg { @apply text-[#6fa8d6] mt-1 shrink-0; }
   .info-benefit h3 { @apply font-semibold; }
   .info-benefit p { @apply text-sm text-slate-400 mt-1; }
-  .info-shadow-box { @apply bg-black/55 backdrop-blur-sm rounded-3xl p-7 sm:p-9 lg:p-10 max-w-lg shadow-[0_18px_50px_rgba(0,0,0,0.35)]; }
+  .info-shadow-box { @apply bg-black/40 backdrop-blur-sm rounded-[15px] p-7 sm:p-9 lg:p-10 max-w-lg; }
   .flow-card { @apply bg-white text-[#1a3d60] m-4 sm:m-8 lg:m-12 self-center p-6 sm:p-10 shadow-[0_18px_50px_rgba(0,0,0,0.35)] rounded-2xl; }
   .step-progress { @apply flex items-start mb-10; }
   .step-wrap { @apply flex flex-1 items-start last:flex-none; }
