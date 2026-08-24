@@ -22,11 +22,10 @@ export default function Payment() {
   };
 
   return (
-    <FlowLayout step={3} title="Activate Your Account" subtitle="Complete your monthly subscription to begin receiving RFQ alerts." infoProps={{ copy: "Get started now and stay ahead of your competition with RFQ alerts for a simple monthly fee." }}>
+    <FlowLayout step={3} title="Continue Your Subscription" subtitle="Activate your monthly plan to keep your RFQ alerts coming." infoProps={{ copy: "Don't let your alerts stop — stay ahead of your competition by activating your monthly subscription today." }}>
       <div className="pricing-breakdown">
         <div className="pricing-row">
-          <div><strong>Base Subscription</strong><small>First User
-</small></div>
+          <div><strong>Base Subscription</strong><small>First Recipient</small></div>
           <span>${baseFee.toFixed(2)}/mo</span>
         </div>
         {additionalUsers > 0 && <div className="pricing-row">
@@ -49,7 +48,7 @@ export default function Payment() {
         </div>
         <button type="button" className="card-placeholder" disabled>
           <CreditCard />
-          <span><strong>Card details</strong><small>You'll be redirected to Stripe's secure checkout to enter your card information.</small></span>
+          <span><strong>Card details</strong><small>You'll be redirected to Stripe's secure checkout to enter your card information and keep your alerts active.</small></span>
         </button>
         <p><LockKeyhole size={14} /> Your payment information is encrypted and secure.</p>
       </div>
@@ -57,8 +56,8 @@ export default function Payment() {
       <div className="confirmation-box">
         <Mail />
         <div>
-          <h3>Payment Confirmation</h3>
-          <p>A receipt will be sent to {setup.email || "your email address"} each billing cycle.</p>
+          <h3>Keep Your Alerts Active</h3>
+          <p>Once activated, your RFQ alerts will continue without interruption. A receipt will be sent to {setup.email || "your email address"} each billing cycle.</p>
         </div>
       </div>
 
@@ -73,7 +72,7 @@ export default function Payment() {
           {processing ?
           <><Loader2 className="animate-spin" size={18} /> Redirecting to Stripe...</> :
 
-          <>Subscribe ${total.toFixed(2)}/mo <ArrowRight size={18} /></>
+          <>Continue ${total.toFixed(2)}/mo <ArrowRight size={18} /></>
           }
         </button>
       </div>
