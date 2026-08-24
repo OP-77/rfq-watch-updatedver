@@ -23,7 +23,7 @@ export default function Dashboard() {
 
   const handleManagePayment = () => {
     setPortalLoading(true);
-    base44.functions.invoke("createStripePortalSession", { returnUrl: window.location.href })
+    base44.functions.invoke("createStripePortalSession", { returnUrl: window.location.href, email: displayEmail })
       .then((res) => { if (res?.url) window.location.href = res.url; })
       .catch(() => {})
       .finally(() => setPortalLoading(false));
@@ -31,7 +31,7 @@ export default function Dashboard() {
 
   const handleUnsubscribe = () => {
     setUnsubLoading(true);
-    base44.functions.invoke("cancelSubscription", { returnUrl: window.location.href })
+    base44.functions.invoke("cancelSubscription", { returnUrl: window.location.href, email: displayEmail })
       .then((res) => { if (res?.url) window.location.href = res.url; else setUnsubscribed(true); })
       .catch(() => setUnsubscribed(true))
       .finally(() => setUnsubLoading(false));
