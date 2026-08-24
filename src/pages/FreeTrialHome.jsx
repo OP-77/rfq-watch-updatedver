@@ -11,7 +11,8 @@ export default function FreeTrialHome() {
           <p className="rfq-eyebrow">Your Free Trial Is Ending</p>
           <h1>Don't Let Your <span>RFQ Alerts</span> Go Quiet.</h1>
           <div className="gold-rule" />
-          <p>You've seen the value — relevant government RFQs delivered straight to your inbox. Keep the alerts flowing by activating your monthly subscription before your trial ends.</p>
+          <p>You've seen the value of relevant government RFQs delivered straight to your inbox.</p>
+          <p className="mt-4">Stay ahead of your competition by activating your monthly subscription before your trial ends.</p>
           <small><CircleCheck size={15} /> Rapid. Reliable. Relevant.</small>
         </div>
       </section>
