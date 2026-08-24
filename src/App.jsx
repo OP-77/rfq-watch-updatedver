@@ -14,6 +14,7 @@ import CompanyDetails from '@/pages/CompanyDetails';
 import Payment from '@/pages/Payment';
 import OrderConfirmation from '@/pages/OrderConfirmation';
 import ManageRecipients from '@/pages/ManageRecipients';
+import NewCustomerPayment from '@/pages/NewCustomerPayment';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -49,6 +50,7 @@ const AuthenticatedApp = () => {
         <Route path="/payment" element={<Payment />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
         <Route path="/manage-recipients" element={<ManageRecipients />} />
+        <Route path="/new-customer-payment" element={<NewCustomerPayment />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
