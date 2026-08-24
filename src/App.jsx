@@ -15,6 +15,7 @@ import Payment from '@/pages/Payment';
 import OrderConfirmation from '@/pages/OrderConfirmation';
 import ManageRecipients from '@/pages/ManageRecipients';
 import NewCustomerPayment from '@/pages/NewCustomerPayment';
+import RecipientsExisting from '@/pages/RecipientsExisting';
 import Dashboard from '@/pages/Dashboard';
 
 const AuthenticatedApp = () => {
@@ -48,6 +49,7 @@ const AuthenticatedApp = () => {
         <Route path="/create-account-existing" element={<FreeTrialHome />} />
         <Route path="/create-account-new" element={<CreateAccount />} />
         <Route path="/company-details" element={<CompanyDetails />} />
+        <Route path="/recipients-existing" element={<RecipientsExisting />} />
         <Route path="/existing-customer-payment" element={<Payment />} />
         <Route path="/new-customer-payment" element={<NewCustomerPayment />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />

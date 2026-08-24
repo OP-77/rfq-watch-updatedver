@@ -11,7 +11,7 @@ export default function Payment() {
   const baseFee = 50;
   const additionalFee = additionalUsers * 5;
   const total = baseFee + additionalFee;
-  const back = userCount === 1 ? "/create-account" : "/company-details";
+  const back = userCount === 1 ? "/create-account-existing" : "/recipients-existing";
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
 
