@@ -15,6 +15,7 @@ import Payment from '@/pages/Payment';
 import OrderConfirmation from '@/pages/OrderConfirmation';
 import ManageRecipients from '@/pages/ManageRecipients';
 import NewCustomerPayment from '@/pages/NewCustomerPayment';
+import Dashboard from '@/pages/Dashboard';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -44,12 +45,14 @@ const AuthenticatedApp = () => {
     <Routes>
       <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
         <Route path="/" element={<Home />} />
-        <Route path="/free-trial" element={<FreeTrialHome />} />
-        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/create-account-existing" element={<FreeTrialHome />} />
+        <Route path="/create-account-new" element={<CreateAccount />} />
         <Route path="/company-details" element={<CompanyDetails />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/existing-customer-payment" element={<Payment />} />
+        <Route path="/new-customer-payment" element={<NewCustomerPayment />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
         <Route path="/manage-recipients" element={<ManageRecipients />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/new-customer-payment" element={<NewCustomerPayment />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />

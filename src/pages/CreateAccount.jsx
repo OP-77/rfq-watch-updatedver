@@ -16,7 +16,7 @@ export default function CreateAccount() {
       setEmailError(recipientEmails.includes(value.toLowerCase()) ? "Duplicate email, please try another address." : "");
     }
   };
-  const submit = (e) => { e.preventDefault(); if (emailError) return; const data = { ...saved, ...form, amountUsers: Number(form.amountUsers) }; localStorage.setItem("rfqWatchSetup", JSON.stringify(data)); navigate(data.amountUsers === 1 ? "/payment" : "/company-details"); };
+  const submit = (e) => { e.preventDefault(); if (emailError) return; const data = { ...saved, ...form, amountUsers: Number(form.amountUsers) }; localStorage.setItem("rfqWatchSetup", JSON.stringify(data)); navigate(data.amountUsers === 1 ? "/new-customer-payment" : "/company-details"); };
   return <FlowLayout step={1} title="Create Your Account" subtitle="Enter your contact details and tell us how many recipients need access.">
     <form className="rfq-form" onSubmit={submit}>
       <div className="form-grid">
