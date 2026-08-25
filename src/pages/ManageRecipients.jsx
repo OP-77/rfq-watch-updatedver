@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Trash2, UserPlus, Users } from "lucide-react";
-import FlowLayout from "@/components/rfq/FlowLayout";
+import BrandHeader from "@/components/rfq/BrandHeader";
+import InfoPanel from "@/components/rfq/InfoPanel";
 
 export default function ManageRecipients() {
   const navigate = useNavigate();
@@ -10,11 +11,6 @@ export default function ManageRecipients() {
   const [primaryName, setPrimaryName] = useState(saved.fullName || "");
   const [recipients, setRecipients] = useState(() => (saved.secondaryUsers || []).map(u => ({ ...u })));
   const [errors, setErrors] = useState({});
-
-  const allEmails = () => {
-    const list = [primary.toLowerCase(), ...recipients.map(r => (r.email || "").toLowerCase())];
-    return list;
-  };
 
   const checkDuplicates = (list) => {
     const emails = [primary.toLowerCase(), ...list.map(r => (r.email || "").toLowerCase())];
@@ -52,81 +48,77 @@ export default function ManageRecipients() {
     const newCount = 1 + recipients.length;
     const updated = { ...saved, fullName: primaryName, email: primary, secondaryUsers: recipients, amountUsers: newCount };
     localStorage.setItem("rfqWatchSetup", JSON.stringify(updated));
-    navigate("/order-confirmation");
+    navigate("/dashboard");
   };
 
-  const currentTotal = 50 + Math.max(0, recipients.length) * 5;
-  const monthlyTotal = currentTotal;
-
   return (
-    <FlowLayout
-      step={2}
-      title="Manage Recipients"
-      subtitle="Add, edit, or remove recipients. Billing updates automatically when you make changes."
-      infoProps={{
-        title: "Keep Your",
-        accent: "Team",
-        ending: "In Sync.",
-        copy: "Manage who receives RFQ alerts. Add new team members or remove access anytime — your monthly subscription adjusts automatically."
-      }}
-    >
-      <form className="rfq-form" onSubmit={save}>
-        <fieldset className="user-box">
-          <legend>Primary Recipient</legend>
-          <div className="form-grid">
-            <label>Full Name <span>*</span>
-              <input value={primaryName} onChange={(e) => setPrimaryName(e.target.value)} placeholder="Enter full name" required />
-            </label>
-            <label>Email Address <span>*</span>
-              <input type="email" value={primary} onChange={(e) => setPrimary(e.target.value)} placeholder="you@company.com" required />
-            </label>
+    <div className="rfq-page">
+      <BrandHeader />
+      <main className="rfq-layout">
+        <InfoPanel
+          title="Keep Your"
+          accent="Team"
+          ending="In Sync."
+          copy="Manage who receives RFQ alerts. Add new team members or remove access anytime — additional recipients are included at no extra cost."
+        />
+        <section className="flow-card">
+          <div className="flow-heading">
+            <h2>Manage Recipients</h2>
+            <p>Add, edit, or remove recipients. Additional recipients are free with your subscription.</p>
           </div>
-        </fieldset>
-
-        <h3 className="section-title flex items-center gap-2"><Users size={18} className="text-[#2c5a89]" /> Additional Recipients</h3>
-        <div className="secondary-list">
-          {recipients.length === 0 && <p className="text-slate-400 text-sm">No additional recipients yet. Click "Add Recipient" to add one.</p>}
-          {recipients.map((r, index) => (
-            <fieldset className="user-box" key={index}>
-              <legend className="flex items-center justify-between w-full">
-                <span>Recipient {index + 2}</span>
-                <button type="button" className="text-red-500 hover:text-red-700 inline-flex items-center gap-1 text-xs" onClick={() => removeRecipient(index)}>
-                  <Trash2 size={14} /> Remove
-                </button>
-              </legend>
+          <form className="rfq-form" onSubmit={save}>
+            <fieldset className="user-box">
+              <legend>Primary Recipient</legend>
               <div className="form-grid">
                 <label>Full Name <span>*</span>
-                  <input value={r.name} onChange={(e) => updateRecipient(index, "name", e.target.value)} placeholder="Enter full name" required />
+                  <input value={primaryName} onChange={(e) => setPrimaryName(e.target.value)} placeholder="Enter full name" required />
                 </label>
                 <label>Email Address <span>*</span>
-                  <input type="email" value={r.email} onChange={(e) => updateRecipient(index, "email", e.target.value)} placeholder="recipient@company.com" required className={errors[index] ? "input-error" : ""} />
-                  {errors[index] && <small className="!text-red-500 font-semibold">{errors[index]}</small>}
+                  <input type="email" value={primary} onChange={(e) => setPrimary(e.target.value)} placeholder="you@company.com" required />
                 </label>
               </div>
             </fieldset>
-          ))}
-        </div>
 
-        <button type="button" className="back-button mb-2" onClick={addRecipient}>
-          <UserPlus size={18} /> Add Recipient
-        </button>
+            <h3 className="section-title flex items-center gap-2"><Users size={18} className="text-[#2c5a89]" /> Additional Recipients (Free)</h3>
+            <div className="secondary-list">
+              {recipients.length === 0 && <p className="text-slate-400 text-sm">No additional recipients yet. Click "Add Recipient" to add one.</p>}
+              {recipients.map((r, index) => (
+                <fieldset className="user-box" key={index}>
+                  <legend className="flex items-center justify-between w-full">
+                    <span>Recipient {index + 2}</span>
+                    <button type="button" className="text-red-500 hover:text-red-700 inline-flex items-center gap-1 text-xs" onClick={() => removeRecipient(index)}>
+                      <Trash2 size={14} /> Remove
+                    </button>
+                  </legend>
+                  <div className="form-grid">
+                    <label>Full Name <span>*</span>
+                      <input value={r.name} onChange={(e) => updateRecipient(index, "name", e.target.value)} placeholder="Enter full name" required />
+                    </label>
+                    <label>Email Address <span>*</span>
+                      <input type="email" value={r.email} onChange={(e) => updateRecipient(index, "email", e.target.value)} placeholder="recipient@company.com" required className={errors[index] ? "input-error" : ""} />
+                      {errors[index] && <small className="!text-red-500 font-semibold">{errors[index]}</small>}
+                    </label>
+                  </div>
+                </fieldset>
+              ))}
+            </div>
 
-        <div className="form-divider" />
+            <button type="button" className="back-button mb-2" onClick={addRecipient}>
+              <UserPlus size={18} /> Add Recipient
+            </button>
 
-        <div className="fee-card">
-          <div><strong>${monthlyTotal.toFixed(2)}/mo</strong><span>{1 + recipients.length} {1 + recipients.length === 1 ? "recipient" : "recipients"} · $50 base + $5 per additional</span></div>
-        </div>
-
-        <div className="form-divider" />
-        <div className="form-actions">
-          <button type="button" className="back-button" onClick={() => navigate("/")}>
-            <ArrowLeft size={18} /> Back
-          </button>
-          <button className="continue-button" type="submit">
-            Save Changes <ArrowRight size={18} />
-          </button>
-        </div>
-      </form>
-    </FlowLayout>
+            <div className="form-divider" />
+            <div className="form-actions">
+              <button type="button" className="back-button" onClick={() => navigate("/dashboard")}>
+                <ArrowLeft size={18} /> Back to Dashboard
+              </button>
+              <button className="continue-button" type="submit">
+                Save Changes <ArrowRight size={18} />
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
   );
 }

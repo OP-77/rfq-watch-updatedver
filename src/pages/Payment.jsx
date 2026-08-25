@@ -7,10 +7,8 @@ export default function Payment() {
   const navigate = useNavigate();
   const setup = JSON.parse(localStorage.getItem("rfqWatchSetup") || "{}");
   const userCount = Number(setup.amountUsers || 1);
-  const additionalUsers = Math.max(0, userCount - 1);
   const baseFee = 50;
-  const additionalFee = additionalUsers * 5;
-  const total = baseFee + additionalFee;
+  const total = baseFee;
   const back = userCount === 1 ? "/create-account-existing" : "/recipients-existing";
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
@@ -25,14 +23,9 @@ export default function Payment() {
     <FlowLayout step={3} title="Continue Your Subscription" subtitle="Activate your monthly plan to keep your RFQ alerts coming." infoProps={{ copy: "Don't let your alerts stop — stay ahead of your competition by activating your monthly subscription today." }}>
       <div className="pricing-breakdown">
         <div className="pricing-row">
-          <div><strong>Base Subscription</strong><small>First Recipient</small></div>
+          <div><strong>Base Subscription</strong><small>All recipients included</small></div>
           <span>${baseFee.toFixed(2)}/mo</span>
         </div>
-        {additionalUsers > 0 && <div className="pricing-row">
-            <div><strong>Additional Recipients</strong><small>{additionalUsers} {additionalUsers === 1 ? "recipient" : "recipients"} × $5.00/mo</small></div>
-            <span>${additionalFee.toFixed(2)}/mo</span>
-          </div>
-        }
         <div className="pricing-divider" />
         <div className="pricing-total">
           <div><strong>Monthly Total</strong></div>

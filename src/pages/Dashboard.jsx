@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, CreditCard, Loader2, LogOut, UserCircle, Users } from "lucide-react";
+import { ArrowRight, CreditCard, Loader2, LogOut, UserCircle, Users, RotateCcw, AlertTriangle } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import BrandHeader from "@/components/rfq/BrandHeader";
+
+const FLAT_FEE = 50;
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
@@ -10,6 +12,7 @@ export default function Dashboard() {
   const [portalLoading, setPortalLoading] = useState(false);
   const [unsubLoading, setUnsubLoading] = useState(false);
   const [unsubscribed, setUnsubscribed] = useState(false);
+  const [showUnsubModal, setShowUnsubModal] = useState(false);
 
   useEffect(() => {
     base44.auth.me().then(setUser).catch(() => {});
@@ -17,7 +20,7 @@ export default function Dashboard() {
   }, []);
 
   const userCount = Number(setup.amountUsers || 1);
-  const monthlyTotal = 50 + Math.max(0, userCount - 1) * 5;
+  const monthlyTotal = FLAT_FEE;
   const displayName = user?.full_name || setup.fullName || "Account Holder";
   const displayEmail = user?.email || setup.email || "";
 
@@ -29,7 +32,8 @@ export default function Dashboard() {
       .finally(() => setPortalLoading(false));
   };
 
-  const handleUnsubscribe = () => {
+  const confirmUnsubscribe = () => {
+    setShowUnsubModal(false);
     setUnsubLoading(true);
     base44.functions.invoke("cancelSubscription", { returnUrl: window.location.href })
       .then((res) => { if (res?.url) window.location.href = res.url; else setUnsubscribed(true); })
@@ -60,11 +64,17 @@ export default function Dashboard() {
             <div><span className="block text-xs uppercase tracking-widest text-[#6fa8d6] font-bold">Plan</span><span className="text-white">RFQ Watch Lite — ${monthlyTotal.toFixed(2)}/mo ({userCount} {userCount === 1 ? "recipient" : "recipients"})</span></div>
           </div>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <button onClick={handleUnsubscribe} disabled={unsubLoading || unsubscribed} className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-red-600/80 text-white font-bold rounded-full transition hover:bg-red-600 disabled:opacity-50">
-              {unsubLoading ? <><Loader2 className="animate-spin" size={18} /> Processing...</> : <><LogOut size={18} /> {unsubscribed ? "Unsubscribed" : "Unsubscribe"}</>}
-            </button>
+            {unsubscribed ? (
+              <button onClick={confirmUnsubscribe} disabled={unsubLoading} className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-green-600 text-white font-bold rounded-full transition hover:bg-green-700 disabled:opacity-50">
+                {unsubLoading ? <><Loader2 className="animate-spin" size={18} /> Processing...</> : <><RotateCcw size={18} /> Resubscribe</>}
+              </button>
+            ) : (
+              <button onClick={() => setShowUnsubModal(true)} disabled={unsubLoading} className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-red-600/80 text-white font-bold rounded-full transition hover:bg-red-600 disabled:opacity-50">
+                {unsubLoading ? <><Loader2 className="animate-spin" size={18} /> Processing...</> : <><LogOut size={18} /> Unsubscribe</>}
+              </button>
+            )}
           </div>
-          {unsubscribed && <p className="text-slate-300 text-sm mt-3">Your subscription has been cancelled. You will stop receiving RFQ alerts at the end of your billing period.</p>}
+          {unsubscribed && <p className="text-slate-300 text-sm mt-3">Your subscription has been cancelled. Click Resubscribe to reactivate your RFQ alerts.</p>}
         </section>
 
         {/* Recipient Management */}
@@ -73,7 +83,7 @@ export default function Dashboard() {
             <Users className="text-[#6fa8d6]" size={28} />
             <h2 className="text-white text-xl font-semibold">Recipient Management</h2>
           </div>
-          <p className="text-slate-300 mb-4">Manage who receives RFQ alerts. Add or remove recipients — your monthly billing adjusts automatically.</p>
+          <p className="text-slate-300 mb-4">Manage who receives RFQ alerts. Add or remove recipients at no extra cost.</p>
           <Link to="/manage-recipients" className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-[#2c5a89] text-white font-bold rounded-full transition hover:bg-[#3a6ba0]">
             Manage Recipients <ArrowRight size={18} />
           </Link>
@@ -91,6 +101,27 @@ export default function Dashboard() {
           </button>
         </section>
       </main>
+
+      {/* Unsubscribe Confirmation Modal */}
+      {showUnsubModal && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-5" onClick={() => setShowUnsubModal(false)}>
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                <AlertTriangle className="text-red-600" size={24} />
+              </div>
+              <h3 className="text-xl font-semibold text-[#1a3d60]">Unsubscribe from RFQ Watch?</h3>
+            </div>
+            <p className="text-slate-500 mb-6">You will stop receiving RFQ alerts at the end of your current billing period. You can resubscribe at any time from your dashboard.</p>
+            <div className="flex flex-col-reverse sm:flex-row gap-3 justify-end">
+              <button onClick={() => setShowUnsubModal(false)} className="back-button">Cancel</button>
+              <button onClick={confirmUnsubscribe} disabled={unsubLoading} className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-red-600 text-white font-bold rounded-full transition hover:bg-red-700 disabled:opacity-50">
+                {unsubLoading ? <><Loader2 className="animate-spin" size={18} /> Processing...</> : <><LogOut size={18} /> Yes, Unsubscribe</>}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

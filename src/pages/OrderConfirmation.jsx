@@ -12,7 +12,7 @@ const proFeatures = [
 export default function OrderConfirmation() {
   const setup = JSON.parse(localStorage.getItem("rfqWatchSetup") || "{}");
   const userCount = Number(setup.amountUsers || 1);
-  const total = 50 + Math.max(0, userCount - 1) * 5;
+  const total = 50;
 
   return (
     <div className="landing-page">
@@ -25,7 +25,7 @@ export default function OrderConfirmation() {
           <p className="max-w-lg mx-auto">Your subscription is active. We've sent a confirmation to {setup.email || "your email address"} — daily RFQ alerts start tomorrow morning.</p>
           <div className="mt-6 flex flex-col sm:flex-row items-center sm:justify-between gap-4">
             <span className="font-semibold text-[#6fa8d6]">${total.toFixed(2)}/mo · {userCount} {userCount === 1 ? "recipient" : "recipients"}</span>
-            <Link className="back-button" to="/">Return Home</Link>
+            <Link className="continue-button" to="/dashboard">Go to Dashboard</Link>
           </div>
         </section>
 
