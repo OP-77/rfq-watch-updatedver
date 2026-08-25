@@ -11,8 +11,17 @@ export default function CreateAccountExisting() {
   const update = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: name === "cageCode" ? value.toUpperCase().slice(0, 5) : value });
+    if (name === "amountUsers") {
+      const newCount = Number(value);
+      const oldCount = Number(form.amountUsers);
+      if (newCount < oldCount) {
+        const updated = { ...saved, secondaryUsers: [] };
+        localStorage.setItem("rfqWatchSetup", JSON.stringify(updated));
+      }
+    }
     if (name === "email") {
-      const recipientEmails = (saved.secondaryUsers || []).map(u => (u.email || "").toLowerCase());
+      const current = JSON.parse(localStorage.getItem("rfqWatchSetup") || "{}");
+      const recipientEmails = (current.secondaryUsers || []).map(u => (u.email || "").toLowerCase());
       setEmailError(recipientEmails.includes(value.toLowerCase()) ? "Duplicate email, please try another address." : "");
     }
   };
