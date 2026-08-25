@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, CreditCard, Loader2, LogOut, UserCircle, Users, RotateCcw, AlertTriangle } from "lucide-react";
+import { ArrowRight, CreditCard, Loader2, LogOut, UserCircle, Users, RotateCcw, AlertTriangle, LogIn } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import BrandHeader from "@/components/rfq/BrandHeader";
 
@@ -87,6 +87,18 @@ export default function Dashboard() {
           <Link to="/manage-recipients" className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-[#2c5a89] text-white font-bold rounded-full transition hover:bg-[#3a6ba0]">
             Manage Recipients <ArrowRight size={18} />
           </Link>
+        </section>
+
+        {/* Login Link */}
+        <section className="info-shadow-box w-full max-w-none">
+          <div className="flex items-center gap-3 mb-5">
+            <LogIn className="text-[#6fa8d6]" size={28} />
+            <h2 className="text-white text-xl font-semibold">Access RFQ Watch</h2>
+          </div>
+          <p className="text-slate-300 mb-4">Log in to your RFQ Watch account to view and manage your alerts.</p>
+          <a href="https://logisticsinformation.com/LITWeb4/login/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-[#2c5a89] text-white font-bold rounded-full transition hover:bg-[#3a6ba0]">
+            Log In to RFQ Watch <ArrowRight size={18} />
+          </a>
         </section>
 
         {/* Payment Management */}
