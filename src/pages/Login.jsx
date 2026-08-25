@@ -9,53 +9,29 @@ const FIXED_PASSWORD = "RFQWatch2024!";
 export default function Login() {
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const sendCode = async (e) => {
+  const sendOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
-      await base44.functions.invoke("requestLoginCode", { email });
-      setStep(2);
-    } catch (err) {
-      setError(err.response?.data?.error || "Failed to send code. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const verifyCode = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    try {
-      const res = await base44.functions.invoke("verifyLoginCode", { email, code });
-      if (!res.data?.verified) {
-        setError("Invalid verification code.");
-        return;
-      }
       try {
         await base44.auth.register({ email, password: FIXED_PASSWORD });
-        setStep(3);
       } catch {
-        try {
-          await base44.auth.loginViaEmailPassword(email, FIXED_PASSWORD);
-        } catch {
-          setError("Account exists but credentials don't match. Contact your administrator.");
-        }
+        await base44.auth.resendOtp(email);
       }
+      setStep(2);
     } catch (err) {
-      setError(err.response?.data?.error || "Invalid code.");
+      setError("Failed to send OTP. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  const verifyOtp = async (e) => {
+  const verifyOtpCode = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
@@ -82,11 +58,11 @@ export default function Login() {
           {error && <p className="text-red-500 text-sm mb-4 font-medium">{error}</p>}
 
           {step === 1 && (
-            <form className="rfq-form" onSubmit={sendCode}>
+            <form className="rfq-form" onSubmit={sendOtp}>
               <label>Email Address <span>*</span>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" required autoFocus />
               </label>
-              <p className="text-xs text-slate-500 mt-3">A verification code will be sent to your administrator. Contact them to receive your code.</p>
+              <p className="text-xs text-slate-500 mt-3">A one-time verification code will be sent to your email.</p>
               <div className="form-actions mt-6">
                 <button className="continue-button" type="submit" disabled={loading}>
                   {loading ? <><Loader2 size={18} className="animate-spin" /> Sending...</> : <><Mail size={18} /> Send Code <ArrowRight size={18} /></>}
@@ -96,27 +72,13 @@ export default function Login() {
           )}
 
           {step === 2 && (
-            <form className="rfq-form" onSubmit={verifyCode}>
+            <form className="rfq-form" onSubmit={verifyOtpCode}>
               <label>Verification Code <span>*</span>
-                <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="6-digit code" maxLength={6} required autoFocus />
-              </label>
-              <p className="text-xs text-slate-500 mt-3">Enter the 6-digit code your administrator received for {email}.</p>
-              <div className="form-actions mt-6">
-                <button type="button" className="back-button" onClick={() => setStep(1)} disabled={loading}>Back</button>
-                <button className="continue-button" type="submit" disabled={loading}>
-                  {loading ? <><Loader2 size={18} className="animate-spin" /> Verifying...</> : <><ShieldCheck size={18} /> Verify Code</>}
-                </button>
-              </div>
-            </form>
-          )}
-
-          {step === 3 && (
-            <form className="rfq-form" onSubmit={verifyOtp}>
-              <label>Email OTP Code <span>*</span>
                 <input value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="6-digit code" maxLength={6} required autoFocus />
               </label>
-              <p className="text-xs text-slate-500 mt-3">A one-time code was sent to {email}. Enter it to complete sign-in.</p>
+              <p className="text-xs text-slate-500 mt-3">Enter the code sent to {email}.</p>
               <div className="form-actions mt-6">
+                <button type="button" className="back-button" onClick={() => setStep(1)} disabled={loading}>Back</button>
                 <button className="continue-button" type="submit" disabled={loading}>
                   {loading ? <><Loader2 size={18} className="animate-spin" /> Verifying...</> : <><ShieldCheck size={18} /> Sign In</>}
                 </button>
