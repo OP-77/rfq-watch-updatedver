@@ -20,7 +20,7 @@ export default function FreeTrialHome() {
         <p className="rfq-eyebrow">3 Simple Steps</p><h2>Keep Your Alerts Coming</h2>
         <div className="gold-rule" />
         {[[BellRing, "Confirm Your Account", "Verify your CAGE code and contact details."], [Mail, "Manage Recipients", "Choose who should keep receiving RFQ alerts."], [CircleCheck, "Activate Your Plan", "Complete your monthly subscription and stay ahead."]].map(([Icon, title, copy], i) => <div className="landing-step" key={title}><span>{i + 1}</span><div><h3>{title}</h3><p>{copy}</p></div></div>)}
-        <Link className="navy-button" to="/recipients-existing">Continue Receiving RFQ Alerts <ArrowRight size={18} /></Link>
+        <Link className="navy-button" to="/create-account-existing">Continue Receiving RFQ Alerts <ArrowRight size={18} /></Link>
       </section>
     </main>
   </div>;

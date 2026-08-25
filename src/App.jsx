@@ -10,6 +10,7 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
 import FreeTrialHome from '@/pages/FreeTrialHome';
+import CreateAccountExisting from '@/pages/CreateAccountExisting';
 import CreateAccount from '@/pages/CreateAccount';
 import RecipientsNew from '@/pages/RecipientsNew';
 import Payment from '@/pages/Payment';
@@ -48,7 +49,8 @@ const AuthenticatedApp = () => {
       <Route path="/login" element={<Login />} />
       <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
         <Route path="/" element={<Home />} />
-        <Route path="/create-account-existing" element={<FreeTrialHome />} />
+        <Route path="/free-trial" element={<FreeTrialHome />} />
+        <Route path="/create-account-existing" element={<CreateAccountExisting />} />
         <Route path="/create-account-new" element={<CreateAccount />} />
         <Route path="/recipients-new" element={<RecipientsNew />} />
         <Route path="/recipients-existing" element={<RecipientsExisting />} />
