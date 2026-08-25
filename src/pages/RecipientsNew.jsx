@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import FlowLayout from "@/components/rfq/FlowLayout";
 
-export default function CompanyDetails() {
+export default function RecipientsNew() {
   const navigate = useNavigate();
   const setup = JSON.parse(localStorage.getItem("rfqWatchSetup") || "{}");
   const secondaryCount = Math.max(0, Number(setup.amountUsers || 1) - 1);

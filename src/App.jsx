@@ -11,7 +11,7 @@ import Home from '@/pages/Home';
 import Login from '@/pages/Login';
 import FreeTrialHome from '@/pages/FreeTrialHome';
 import CreateAccount from '@/pages/CreateAccount';
-import CompanyDetails from '@/pages/CompanyDetails';
+import RecipientsNew from '@/pages/RecipientsNew';
 import Payment from '@/pages/Payment';
 import OrderConfirmation from '@/pages/OrderConfirmation';
 import ManageRecipients from '@/pages/ManageRecipients';
@@ -50,7 +50,7 @@ const AuthenticatedApp = () => {
         <Route path="/" element={<Home />} />
         <Route path="/create-account-existing" element={<FreeTrialHome />} />
         <Route path="/create-account-new" element={<CreateAccount />} />
-        <Route path="/company-details" element={<CompanyDetails />} />
+        <Route path="/recipients-new" element={<RecipientsNew />} />
         <Route path="/recipients-existing" element={<RecipientsExisting />} />
         <Route path="/existing-customer-payment" element={<Payment />} />
         <Route path="/new-customer-payment" element={<NewCustomerPayment />} />
