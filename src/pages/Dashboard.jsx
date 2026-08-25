@@ -11,6 +11,7 @@ export default function Dashboard() {
   const [setup, setSetup] = useState({});
   const [portalLoading, setPortalLoading] = useState(false);
   const [unsubLoading, setUnsubLoading] = useState(false);
+  const [resubLoading, setResubLoading] = useState(false);
   const [unsubscribed, setUnsubscribed] = useState(false);
   const [showUnsubModal, setShowUnsubModal] = useState(false);
 
@@ -41,6 +42,14 @@ export default function Dashboard() {
       .finally(() => setUnsubLoading(false));
   };
 
+  const handleResubscribe = () => {
+    setResubLoading(true);
+    base44.functions.invoke("reactivateSubscription", {})
+      .then(() => { setUnsubscribed(false); })
+      .catch(() => {})
+      .finally(() => setResubLoading(false));
+  };
+
   return (
     <div className="landing-page">
       <BrandHeader />
@@ -65,8 +74,8 @@ export default function Dashboard() {
           </div>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             {unsubscribed ? (
-              <button onClick={confirmUnsubscribe} disabled={unsubLoading} className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-green-600 text-white font-bold rounded-full transition hover:bg-green-700 disabled:opacity-50">
-                {unsubLoading ? <><Loader2 className="animate-spin" size={18} /> Processing...</> : <><RotateCcw size={18} /> Resubscribe</>}
+              <button onClick={handleResubscribe} disabled={resubLoading} className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-green-600 text-white font-bold rounded-full transition hover:bg-green-700 disabled:opacity-50">
+                {resubLoading ? <><Loader2 className="animate-spin" size={18} /> Processing...</> : <><RotateCcw size={18} /> Resubscribe</>}
               </button>
             ) : (
               <button onClick={() => setShowUnsubModal(true)} disabled={unsubLoading} className="inline-flex items-center justify-center gap-2 min-h-12 px-7 bg-red-600/80 text-white font-bold rounded-full transition hover:bg-red-600 disabled:opacity-50">
@@ -74,7 +83,7 @@ export default function Dashboard() {
               </button>
             )}
           </div>
-          {unsubscribed && <p className="text-slate-300 text-sm mt-3">Your subscription has been cancelled. Click Resubscribe to reactivate your RFQ alerts.</p>}
+          {unsubscribed && <p className="text-slate-300 text-sm mt-3">{resubLoading ? "Reactivating your subscription..." : "Your subscription has been cancelled. Click Resubscribe to reactivate your RFQ alerts."}</p>}
         </section>
 
         {/* Recipient Management */}
