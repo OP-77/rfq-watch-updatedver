@@ -1,10 +1,15 @@
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.40';
 import { secrets } from "base44:runtime";
 
 export default async function(req) {
   try {
+    const base44 = createClientFromRequest(req);
+    const user = await base44.auth.me();
+    if (!user) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
     const body = await req.json().catch(() => ({}));
     const returnUrl = body.returnUrl || "https://rfq-watch-flow.base44.app/dashboard";
-    const email = body.email;
+    const email = user.email;
 
     const stripeKey = secrets.get("STRIPE_SECRET_KEY");
     const headers = {
@@ -12,21 +17,14 @@ export default async function(req) {
       "Stripe-Version": "2025-10-29.clover"
     };
 
-    let customerId;
-
-    if (email) {
-      const custRes = await fetch(`https://api.stripe.com/v1/customers?email=${encodeURIComponent(email)}&limit=1`, { headers });
-      const custData = await custRes.json();
-      if (custData.data && custData.data.length > 0) {
-        customerId = custData.data[0].id;
-      }
-    }
+    const custRes = await fetch(`https://api.stripe.com/v1/customers?email=${encodeURIComponent(email)}&limit=1`, { headers });
+    const custData = await custRes.json();
+    const customerId = custData.data && custData.data.length > 0 ? custData.data[0].id : null;
 
     if (!customerId) {
       return Response.json({ error: "No active subscription found." }, { status: 404 });
     }
 
-    // Find active subscriptions for this customer
     const subRes = await fetch(`https://api.stripe.com/v1/subscriptions?customer=${customerId}&status=active&limit=10`, { headers });
     const subData = await subRes.json();
 
@@ -34,7 +32,6 @@ export default async function(req) {
       return Response.json({ error: "No active subscription to cancel." }, { status: 404 });
     }
 
-    // Cancel all active subscriptions (cancel at period end)
     const cancelled = [];
     for (const sub of subData.data) {
       const cancelRes = await fetch(`https://api.stripe.com/v1/subscriptions/${sub.id}`, {
@@ -46,7 +43,6 @@ export default async function(req) {
       cancelled.push({ id: sub.id, status: cancelData.status, cancel_at_period_end: cancelData.cancel_at_period_end });
     }
 
-    // Create a portal session so the user can confirm
     const params = new URLSearchParams();
     params.append("customer", customerId);
     params.append("return_url", returnUrl);
