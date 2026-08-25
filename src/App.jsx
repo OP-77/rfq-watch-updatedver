@@ -8,6 +8,7 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Home from '@/pages/Home';
+import Login from '@/pages/Login';
 import FreeTrialHome from '@/pages/FreeTrialHome';
 import CreateAccount from '@/pages/CreateAccount';
 import CompanyDetails from '@/pages/CompanyDetails';
@@ -44,6 +45,7 @@ const AuthenticatedApp = () => {
   // Render the main app
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
       <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
         <Route path="/" element={<Home />} />
         <Route path="/create-account-existing" element={<FreeTrialHome />} />
