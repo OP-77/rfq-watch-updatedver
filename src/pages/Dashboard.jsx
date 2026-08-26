@@ -54,7 +54,7 @@ export default function Dashboard() {
     <div className="landing-page">
       <BrandHeader />
       <main className="px-5 py-12 lg:px-16 max-w-5xl mx-auto flex flex-col gap-8">
-        <div>
+        <div className="info-shadow-box w-full max-w-none">
           <p className="rfq-eyebrow">Account Dashboard</p>
           <h1 className="text-white text-4xl font-semibold mt-2">Welcome, {displayName.split(" ")[0]}</h1>
           <div className="gold-rule" />
