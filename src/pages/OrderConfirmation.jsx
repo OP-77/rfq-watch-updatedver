@@ -24,7 +24,7 @@ export default function OrderConfirmation() {
           <div className="gold-rule mx-auto" />
           <p className="max-w-lg mx-auto text-center">Your subscription is active. We've sent your login credentials to {setup.email || "your email address"}.</p>
           <div className="mt-6 flex flex-col sm:flex-row items-center sm:justify-between gap-4">
-            <span className="font-semibold text-[#6fa8d6] flex-1 text-left">${total.toFixed(2)}/mo</span>
+            <span className="font-semibold text-[#6fa8d6] flex-1 text-left h-12 flex items-center">${total.toFixed(2)}/mo</span>
             <div className="flex-1 flex sm:justify-end"><Link className="continue-button" to="/dashboard">Go to Dashboard</Link></div>
           </div>
         </section>
