@@ -25,7 +25,7 @@ export default function OrderConfirmation() {
           <p className="max-w-lg mx-auto text-center">Your subscription is active. We've sent your login credentials to {setup.email || "your email address"}.</p>
           <div className="mt-6 flex flex-col items-center gap-4">
             <span className="font-semibold text-[#6fa8d6] text-lg">${total.toFixed(2)}/mo</span>
-            <Link className="continue-button" to="/dashboard">Go to Dashboard</Link>
+            <Link className="continue-button !ml-0" to="/dashboard">Go to Dashboard</Link>
           </div>
         </section>
 
