@@ -14,6 +14,7 @@ import CreateAccountExisting from '@/pages/CreateAccountExisting';
 import CreateAccount from '@/pages/CreateAccount';
 import RecipientsNew from '@/pages/RecipientsNew';
 import Payment from '@/pages/Payment';
+import ExistingCustomerPaymentV2 from '@/pages/ExistingCustomerPaymentV2';
 import OrderConfirmation from '@/pages/OrderConfirmation';
 import ManageRecipients from '@/pages/ManageRecipients';
 import NewCustomerPayment from '@/pages/NewCustomerPayment';
@@ -55,6 +56,7 @@ const AuthenticatedApp = () => {
         <Route path="/recipients-new" element={<RecipientsNew />} />
         <Route path="/recipients-existing" element={<RecipientsExisting />} />
         <Route path="/existing-customer-payment" element={<Payment />} />
+        <Route path="/existing-customer-payment-v2" element={<ExistingCustomerPaymentV2 />} />
         <Route path="/new-customer-payment" element={<NewCustomerPayment />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
         <Route path="/manage-recipients" element={<ManageRecipients />} />
