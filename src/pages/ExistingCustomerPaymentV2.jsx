@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, CreditCard, Loader2, LockKeyhole, Mail } from "lucide-react";
+import { ArrowRight, CreditCard, Loader2, LockKeyhole, Mail } from "lucide-react";
 import BrandHeader from "@/components/rfq/BrandHeader";
 import InfoPanel from "@/components/rfq/InfoPanel";
 
@@ -85,10 +85,7 @@ export default function ExistingCustomerPaymentV2() {
 
           <div className="form-divider" />
           <div className="form-actions">
-            <button className="back-button" onClick={() => navigate("/create-account-existing")} disabled={processing}>
-              <ArrowLeft size={18} /> Back
-            </button>
-            <button className="continue-button" type="button" onClick={handlePay} disabled={processing}>
+            <button className="continue-button ml-auto" type="button" onClick={handlePay} disabled={processing}>
               {processing ?
               <><Loader2 className="animate-spin" size={18} /> Redirecting to Stripe...</> :
               <>Continue ${total.toFixed(2)}/mo <ArrowRight size={18} /></>
