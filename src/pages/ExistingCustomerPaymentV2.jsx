@@ -31,24 +31,20 @@ export default function ExistingCustomerPaymentV2() {
           <div className="flow-heading"><h2>Continue Your Subscription</h2><p>Activate your monthly plan to keep your RFQ alerts coming.</p></div>
 
           <div className="rfq-form">
-            <div className="secondary-list">
+            <div className="grid sm:grid-cols-2 gap-6">
               <fieldset className="user-box">
                 <legend>Primary Email Address</legend>
-                <div className="form-grid">
-                  <label>Email Address <span>*</span>
-                    <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" required />
-                    <small>RFQ alerts and receipts will be sent to this address.</small>
-                  </label>
-                </div>
+                <label>Email Address <span>*</span>
+                  <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" required />
+                  <small>RFQ alerts and receipts will be sent to this address.</small>
+                </label>
               </fieldset>
               <fieldset className="user-box">
                 <legend>CAGE Code</legend>
-                <div className="form-grid">
-                  <label>CAGE Code <span>*</span>
-                    <input name="cageCode" value={cageCode} onChange={(e) => setCageCode(e.target.value.toUpperCase().slice(0, 5))} placeholder="e.g. 7AB12" pattern="[A-Za-z0-9]{5}" title="Enter a valid 5-character CAGE code" required />
-                    <small>Enter your 5-character CAGE code.</small>
-                  </label>
-                </div>
+                <label>CAGE Code <span>*</span>
+                  <input name="cageCode" value={cageCode} onChange={(e) => setCageCode(e.target.value.toUpperCase().slice(0, 5))} placeholder="e.g. 7AB12" pattern="[A-Za-z0-9]{5}" title="Enter a valid 5-character CAGE code" required />
+                  <small>Enter your 5-character CAGE code.</small>
+                </label>
               </fieldset>
             </div>
           </div>
