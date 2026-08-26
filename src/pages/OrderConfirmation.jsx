@@ -23,9 +23,9 @@ export default function OrderConfirmation() {
           <h1 className="mx-auto text-5xl">Welcome to <span>RFQ Watch Lite</span></h1>
           <div className="gold-rule mx-auto" />
           <div className="mt-6 flex flex-col sm:flex-row items-center sm:justify-between gap-4">
-            <span className="font-semibold text-[#6fa8d6] order-2 sm:order-1">${total.toFixed(2)}/mo · {userCount} {userCount === 1 ? "recipient" : "recipients"}</span>
+            <span className="font-semibold text-[#6fa8d6] order-2 sm:order-1">${total.toFixed(2)}/mo</span>
             <p className="max-w-lg mx-auto text-center order-1 sm:order-2 px-4">Your subscription is active. We've sent your login credentials to {setup.email || "your email address"}.</p>
-            <Link className="continue-button order-3 sm:order-3" to="/dashboard">Go to Dashboard</Link>
+            <Link className="continue-button order-3 sm:order-3 mt-0 sm:mt-8" to="/dashboard">Go to Dashboard</Link>
           </div>
         </section>
 
