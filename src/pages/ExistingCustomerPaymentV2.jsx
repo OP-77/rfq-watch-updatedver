@@ -78,6 +78,8 @@ export default function ExistingCustomerPaymentV2() {
             <div>
               <h3>Keep Your Alerts Active</h3>
               <p>Once activated, your RFQ alerts will continue without interruption. A receipt will be sent to {email || "your email address"} each billing cycle.</p>
+              <div className="h-px bg-slate-200 my-3" />
+              <p>Additional recipients can be added in account management dashboard.</p>
             </div>
           </div>
 
