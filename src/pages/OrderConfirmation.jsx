@@ -22,9 +22,9 @@ export default function OrderConfirmation() {
           <p className="rfq-eyebrow mb-4">Order Confirmed</p>
           <h1 className="mx-auto text-5xl">Welcome to <span>RFQ Watch Lite</span></h1>
           <div className="gold-rule mx-auto" />
-          <p className="max-w-lg mx-auto">Your subscription is active. We've sent your login credentials to {setup.email || "your email address"}.</p>
           <div className="mt-6 flex flex-col sm:flex-row items-center sm:justify-between gap-4">
-            <span className="font-semibold text-[#6fa8d6]">${total.toFixed(2)}/mo · {userCount} {userCount === 1 ? "recipient" : "recipients"}</span>
+            <span className="font-semibold text-[#6fa8d6]">${total.toFixed(2)}/mo</span>
+            <p className="max-w-lg mx-auto text-center">Your subscription is active. We've sent your login credentials to {setup.email || "your email address"}.</p>
             <Link className="continue-button" to="/dashboard">Go to Dashboard</Link>
           </div>
         </section>
